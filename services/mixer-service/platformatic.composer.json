@@ -1,0 +1,40 @@
+{
+  "$schema": "https://platformatic.dev/schemas/v1.4.1/composer",
+  "composer": {
+    "services": [
+      {
+        "id": "asset-service",
+        "openapi": {
+          "url": "/documentation/json",
+          "prefix": "/asset-service"
+        }
+      },
+      {
+        "id": "people-service",
+        "openapi": {
+          "url": "/documentation/json",
+          "prefix": "/people-service"
+        }
+      }
+    ],
+    "refreshTimeout": 1000
+  },
+  "watch": true,
+  "plugins": {
+    "paths": [
+      {
+        "path": "./plugins",
+        "encapsulate": false
+      },
+      "./routes"
+    ]
+  },
+  "clients": [
+    {
+      "schema": "clients/people/people.openapi.json",
+      "name": "people",
+      "type": "openapi",
+      "serviceId": "people-service"
+    }
+  ]
+}

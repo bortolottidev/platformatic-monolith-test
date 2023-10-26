@@ -1,6 +1,6 @@
 {
   "$schema": "https://platformatic.dev/schemas/v1.4.1/runtime",
-  "entrypoint": "people-service",
+  "entrypoint": "mixer-service",
   "allowCycles": false,
   "hotReload": true,
   "autoload": {

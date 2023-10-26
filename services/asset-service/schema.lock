@@ -65,7 +65,7 @@
   },
   {
     "schema": null,
-    "table": "people",
+    "table": "assets",
     "constraints": [
       {
         "column_name": "id",
@@ -88,13 +88,13 @@
       },
       {
         "cid": 1,
-        "name": "name",
+        "name": "title",
         "type": "VARCHAR(255)",
         "notnull": 1,
         "dflt_value": null,
         "pk": 0,
         "hidden": 0,
-        "column_name": "name",
+        "column_name": "title",
         "udt_name": "varchar",
         "is_nullable": "NO",
         "is_generated": "NO"
