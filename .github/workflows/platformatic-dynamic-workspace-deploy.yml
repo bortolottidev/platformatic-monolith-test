@@ -18,17 +18,20 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     env:
-     PORT: 3043 
-     PLT_SERVER_HOSTNAME: 127.0.0.1 
+     DATABASE_URL: ${{ secrets.DATABASE_URL }}
      PLT_SERVER_LOGGER_LEVEL: info 
-     PLT_PEOPLE_SERVICE_DATABASE_URL: ${{ secrets.PLT_PEOPLE_SERVICE_DATABASE_URL }}
-     PLT_PEOPLE_SERVICE_TYPESCRIPT: true 
+     PORT: 3001 
+     PLT_SERVER_HOSTNAME: 127.0.0.1 
+     PLT_TYPESCRIPT: true 
+     DEPLOY_SERVICE_HOST: https://deploy.platformatic.cloud 
 
     steps:
       - name: Checkout application project repository
         uses: actions/checkout@v3
       - name: npm install --omit=dev
         run: npm install --omit=dev
+      - name: Build project        
+        run: npm run build
       - name: Deploy project
         id: deploy-project
         uses: platformatic/onestep@latest
@@ -36,7 +39,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           platformatic_workspace_id: ${{ secrets.PLATFORMATIC_DYNAMIC_WORKSPACE_ID }}
           platformatic_workspace_key: ${{ secrets.PLATFORMATIC_DYNAMIC_WORKSPACE_API_KEY }}
-          platformatic_config_path: ./platformatic.runtime.json
+          platformatic_config_path: ./platformatic.db.json
           label: ${{ github.event.inputs.label }}
     outputs:
       deployment_id: ${{ steps.deploy-project.outputs.deployment_id }}
