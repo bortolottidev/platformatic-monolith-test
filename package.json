@@ -1,14 +1,15 @@
 {
   "scripts": {
     "start": "platformatic start",
-    "test": "node --test test/**"
+    "test": "node --test test/**",
+    "clean": "rm -fr ./dist",
+    "build": "platformatic compile"
   },
   "devDependencies": {
-    "create-platformatic": "1.4.1",
-    "fastify": "^4.24.2"
+    "fastify": "^4.24.2",
+    "typescript": "~5.2.2"
   },
   "dependencies": {
-    "@platformatic/client": "^1.5.0",
     "platformatic": "^1.4.1"
   },
   "engines": {
