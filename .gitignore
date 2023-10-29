@@ -25,3 +25,6 @@ tags
 
 # clinicjs
 .clinic/
+
+# platformatic cloud deploy key
+*.plt.txt
